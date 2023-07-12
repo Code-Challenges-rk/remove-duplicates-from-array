@@ -3,15 +3,13 @@
  * @return {number}
  */
 const removeDuplicates = function (nums) {
-  let uniqueArr = [nums[0]];
-
-  for (let i = 0; i < nums.length; i++) {
-      if (nums[i] !== nums[i+1]) {
-        uniqueArr.push(nums[i+1]);
-        nums[i] = uniqueArr[i];
-      }
+  var deduplicatedSet = new Set(nums);
+  var deduplicatedArray = Array.from(deduplicatedSet);
+  for (var i = 0; i < deduplicatedArray.length; i++) {
+    nums[i] = deduplicatedArray[i];
   }
-  return nums;
+  nums.length = deduplicatedArray.length;
+  return nums.length;
 };
 
 let arr = [1, 1, 2];
